@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{7AE285AB-A106-758F-32BB-FC574FA81305}</ProjectGuid>
+	<ProjectGuid>{030D1D4F-935B-63F3-C6E2-76128EE89601}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,8 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Obstacle.cs" />
-     <Compile Include="Assets\Ship.cs" />
+     <Compile Include="Assets\LevelManagerScript.cs" />
+     <Compile Include="Assets\ObstacleScript.cs" />
+     <Compile Include="Assets\ShipScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
