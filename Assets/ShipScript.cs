@@ -5,6 +5,7 @@ public class ShipScript : MonoBehaviour {
 
 	public LevelManagerScript levelManagerScript;
 
+	public bool isCrashing;
 	bool start;
 	float maxSpeed;
 	float speed;
@@ -23,27 +24,19 @@ public class ShipScript : MonoBehaviour {
 		acceleration = 43f;
 	}
 
-	void OnCollisionEnter(Collision collision){
-			levelManagerScript.EndGame();
-
+	void CrashFall()
+	{
+		isCrashing = true;
+		rigidbody.isKinematic = true;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if(!start)
-			start = levelManagerScript.start;
+	void OnCollisionEnter(Collision collision){
+		CrashFall();
+		levelManagerScript.EndGame();
+	}
 
-		if(transform.position.x <= -5f)
-			transform.position = new Vector3(-5f, transform.position.y, transform.position.z);
-		if(start)
-		{
-			zRotate = 3*speed*(1.2f);
-			transform.rotation = Quaternion.Euler(0, 0, -zRotate);
-			transform.Translate(speed * Time.deltaTime,0,0,Space.World);
-			if(speed <= maxSpeed)
-				speed += Time.deltaTime * acceleration;
-		}
-
+	public void Jump()
+	{ 
 		foreach (Touch touch in Input.touches) {
 			if (touch.phase == TouchPhase.Began)
 				speed = -jump;
@@ -52,6 +45,32 @@ public class ShipScript : MonoBehaviour {
 		if(Input.GetKeyDown("space"))
 		{
 			speed = -jump;
+		}
+	}
+	// Update is called once per frame
+	void Update () {
+
+		start = levelManagerScript.start;
+
+		if(transform.position.x <= -5f)
+			transform.position = new Vector3(-5f, transform.position.y, transform.position.z);
+
+		zRotate = 5*speed*(1.51f);
+		if(zRotate < -20)
+			zRotate = -20;
+
+		if(start || isCrashing)
+		{
+			transform.rotation = Quaternion.Euler(0, 0, -zRotate);
+			transform.Translate(speed * Time.deltaTime,0,0,Space.World);
+			if(speed <= maxSpeed)
+				speed += Time.deltaTime * acceleration;
+			if(transform.position.x >= 3.65f)
+			{
+				transform.position = new Vector3(3.65f, transform.position.y, transform.position.z);
+				isCrashing = false;
+			}
+
 		}
 	}
 }

@@ -14,8 +14,8 @@ public class ObstacleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!start)
-			start = levelManagerScript.start;
+
+		start = levelManagerScript.start;
 
 		if(start)
 			transform.Translate(transform.up*speed*Time.deltaTime);
