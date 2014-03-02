@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 09e457f951a33c94b9b2957de4cd4d86
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: Cube_000
     100002: Cube_001
@@ -16,6 +16,7 @@ ModelImporter:
     3300002: Cube_001
     3300004: //RootNode
     4300000: Cube_000
+    4300002: Cube_001
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -69,4 +70,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 

@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 4dfa0a9f69855c84ba5eef2b1b270846
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startText: {fileID: 100002, guid: 95b0df3ea9fd1174d9a967dae55921cd, type: 2}
+  - Obstacle: {fileID: 100000, guid: ee4565eebfb6c3e499c058361f0252cc, type: 2}
+  - Floor: {fileID: 100000, guid: abca959f7ba6e2444a7c1ff79671c02a, type: 2}
+  - Player: {fileID: 100000, guid: 44aa392696240e84f8f7867b211ab9b7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

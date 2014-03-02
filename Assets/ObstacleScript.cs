@@ -2,37 +2,25 @@
 using System.Collections;
 
 public class ObstacleScript : MonoBehaviour {
+	public LevelManagerScript levelManagerScript;
 	float speed;
 	bool start;
 	// Use this for initialization
 	void Start () {
-		start = false;
-		speed = -5f;
+		levelManagerScript = GameObject.Find("LevelManager").GetComponent<LevelManagerScript>();
+		start = levelManagerScript.start;
+		speed = levelManagerScript.objectSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(start == true)
-		transform.Translate(transform.up*speed*Time.deltaTime);
-		else
-		{
-			foreach (Touch touch in Input.touches) {
-				if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
-					start = true;
-			}
-			if(Input.GetKeyDown("space"))
-			{
-				start = true;
-			}
+		if(!start)
+			start = levelManagerScript.start;
 
-		}
-		if(transform.position.y < -9f)
-		{
-			if(transform.position.x < 0)
-				transform.position = new Vector3(1.3f,9f,0f);
-			else
-				transform.position = new Vector3(-1.3f,9f,0f);
+		if(start)
+			transform.Translate(transform.up*speed*Time.deltaTime);
 
-		}
+		if(transform.position.y <= -9.5)
+			Destroy(this.gameObject);
 	}
 }
